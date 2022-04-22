@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>Seasonal Scenario Planner</title>
+
+</head>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/bootstrap.css">
+
+<body id="test">
+  <div id="source_data" json="{{out}}"> </div>
+	<div class="content">
+		<div class="inner-content bottom_border" >
+      <div class="row-arrange" style="align-items:center"><img src="../img/marslogo.png" class="img-style"> <h4 class="unique" id="title">Seasonal Scenario Planner</h4></div>
+           
+			
+		</div>
+       
+        <div class="mat-expansion-panel">
+          <div class="section">
+          <h4 > Change Summary</h4>
+          <div class="d-flex ">
+          <table class="change_summary">
+            <thead>
+              <tr>
+                <td></td>
+                <td>ZREP</td>
+                <td style="width: 15%;">Description</td>
+                <td >Brand</td>
+                <td >Sub Brand</td>
+                <td >Flavour</td>
+                <td >Inclusion</td>
+                <td >Pack Type</td>
+                <td >Pack Size</td>
+                <td >Piece Count</td>
+                <td >Weight <br>(grams)</td>
+                <td >Cost <br>($)</td>
+              </tr>
+            </thead>
+            
+            <tbody id="cmp_t_body">
+            </tbody>
+          </table>
+          </div>
+        </div>
+		  <div>
+      
+        <div class="section">
+          <h4>
+            Compare Scenarios</h4>
+          <div class="col-md-12">
+            <table>
+              <thead class="header-style">
+                <!-- <tr class=".header-1 ">
+                  <th colspan="8" class="tab-head">Financials Comparision Base vs Simulated</th>
+                </tr> -->
+                <tr id="heade_text">
+                  <th>Metric</th>
+                  <th>Base</th>
+                </tr>
+              </thead>
+              <tbody id="cmp_scenario">
+
+              </tbody>
+            </table>
+          </div>
+          </div>
+          <div class="section">
+
+          
+          <div class="col-md-12 row fin_comp_outline chart-sec flex-flow">
+            <div class="col-md-6">
+              <section>
+                <h3 class="chart-title">Total Volume</h3>
+                <div style="height:450px;width:550px">
+  
+                <canvas id="volume_data" width="550" height="400">
+                  </div>
+              </section>
+              
+            </canvas>
+            </div>
+            <div class="col-md-6">
+              <section>
+              <h3 class="chart-title">GSV & TE</h3>
+              <div style="height:450px;width:550px">
+
+              <canvas id="gsv_te_data" width="550" height="400">
+              </section>
+              </div>
+            </canvas>
+            </div>
+
+        </div>
+        <div class="col-md-12 row fin_comp_outline chart-sec flex-flow">
+          <div class="col-md-6">
+            <section>
+            <h3 class="chart-title">NSV & MAC</h3>
+            <div style="height:450px;width:550px">
+
+            <canvas id="nsv_mac_data" width="550" height="400">
+            </section>
+            </div>
+          </canvas>
+          </div>
+          <div class="col-md-6">
+            <section>
+            <h3 class="chart-title">COGS</h3>
+            <div style="height:450px;width:550px">
+            <canvas id="cogs_data" width="550" height="400">
+            </div>
+          </canvas>
+        </section>
+          </div>
+        </div>
+        <div class="col-md-12 row fin_comp_outline chart-sec flex-flow">
+
+          <div class="col-md-6">
+            <section>
+            <h3 class="chart-title">COGS(%)</h3>
+            <div style="height:450px;width:550px">
+            <canvas id="cogs_percent_data" width="550" height="400">
+            </div>
+          </canvas>
+        </section>
+          </div>
+      </div>
+    </div>
+		  </div>
+        </div>
+	</div>
+</body>
+<script src="../js/poly_fills.js"></script>
+<script src="../js/jquery.js"></script>
+<script src="../js/chart.min.js"></script>
+<script language="javascript" type="text/javascript" src="../js/chartjs-plugin-datalabels.js"></script>
+<script language="javascript" src="../js/core.js"></script>
+</html>

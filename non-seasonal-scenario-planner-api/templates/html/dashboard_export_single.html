@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>Seasonal Scenario Planner</title>
+	
+    <script>
+        
+	</script>
+</head>
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/bootstrap.css">
+
+<body id="test">
+  <div id="source_data" json="{{out}}"> </div>
+	<div class="content">
+		<div class="inner-content bottom_border" >
+      <div class="row-arrange" style="align-items:center"><img src="../img/marslogo.png" class="img-style"> <h4 class="unique" id="title">Seasonal Scenario Planner</h4></div>
+           
+			
+		</div>
+
+    <div class="mat-expansion-panel">
+      <div class="section">
+        <h4 > Scenario Name: <span style="color:black"id="scenario_name"></span></h4>
+        </div>
+        </div>
+        <div class="mat-expansion-panel">
+          <div class="section">
+          <h4 > PACK Detail</h4>
+          <div class="pack-container">
+            <table class="pb-3">
+              <tbody>
+                <tr class="dflex each-list pt-0">
+                    <td class="each-ele">UPC: <span id="zrep"></span></td>
+                    <td class="each-ele">UPC Description: <span id="description"></span></td>
+                </tr>
+                <tr class="dflex each-list">
+                    <td class="each-ele">Channel: <span id="channel"></span></td>
+                    <td class="each-ele">Year: <span id="year"></span></td>
+                    <td class="each-ele">Category: <span id="category"></span></td>
+                    <td class="each-ele">Brand: <span id="brand"></span></td>
+                </tr>
+                <tr class="dflex each-list">
+                    <td class="each-ele">Pack Type: <span id="packtype"></span></td>
+                    <td class="each-ele">Pack Count: <span  id="piece_count"></span></td>
+                    <td class="each-ele">Pack Size: <span id="pack_size"></span></td>
+                </tr>
+                <tr class="dflex each-list">
+                    <td class="each-ele">Usage Occassion: <span id="usage_occasion"></span></td>
+                </tr>
+                <tr class="dflex flex-col">
+                    <tr class="dflex each-list border-0">
+                        <td class="each-ele">Unit Sold: <span id="units_sold"></span></td>
+                        <td class="each-ele">Sales ($): <span id="sales"> </span></td>
+                        <td class="each-ele">AUP ($): <span id="aup"></span></td>
+                    </tr>
+                    <tr class="dflex each-list border-0">
+                        <td class="each-ele">TR(%): <span id="tr"></span></td>
+                        <td class="each-ele">Cost ($): <span id="cost"></span></td>
+                        
+                    </tr>
+                </tr>
+                
+                
+              </tbody>
+              </table>
+        </div>
+  
+        </div>
+		  <div>
+      
+        <div class="section">
+          <h4>DONOR MIX</h4>
+            <div  class=" col-md-12 loader-table-wrapper planner_table">
+              <table class="table-cont">
+                  <thead>
+                      <tr class="table-head">
+                          <td style="min-width: 60px;"></td>
+                          <td>ZREP</td>
+                          <td>Description</td>
+                          <td>Brand</td>
+                          <td>Sub Brand</td>
+                          <td>Flavour</td>
+                          <td>Inclusion</td>
+                          <td>Pack Type</td>
+                          <td>Pack Size</td>
+                          <td>Count</td>
+                          <td>Weight<br>(grams)</td>
+                          <td>Cost <br>($)</td>
+                      </tr>
+                  </thead>
+                  <tbody id="cmp_t_body">
+                  </tbody>
+              </table>
+            </div>
+          
+		  </div>
+      <div class="section" >
+        <div class="fin_comp_outline">
+        <div style="padding-top:20px" class="table-1-container table-output mt-5 dflex-flow-c row col-md-12 flex-flow ">
+          <div class="col-md-6">
+            <table class="w-100" >
+              <thead>
+                <tr class="header-style">
+                  <th>Metric</th>
+                  <th >Base</th>
+                  <th >Simulated</th>
+                </tr>
+              </thead>
+              
+              <tbody id="cmp_scenario">
+
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-6">
+            <h3 class="chart-title">Total Volume</h3>
+            <div style="width:450px">
+              <canvas id="volume_data">
+              </canvas>
+            </div>
+           
+          </div>
+        </div>
+        <div class="col-md-12 row flex-flow">
+
+            <div class="col-md-6">
+              <h3 class="chart-title">GSV & TE</h3>
+              <div style="width:550px">
+                <canvas id="gsv_te_data" >
+                </canvas>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <h3 class="chart-title">NSV & MAC</h3>
+              <div style="width:550px">
+                <canvas id="nsv_mac_data">
+                </canvas>
+              </div>
+            </div>
+        </div>
+        <div class="col-md-12 row flex-flow">
+          <div class="col-md-6">
+            <h3 class="chart-title">COGS</h3>
+            <div style="width:550px">
+              <canvas id="cogs_data">
+              </canvas>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h3 class="chart-title">COGS(%)</h3>
+            <div style="width:550px">
+              <canvas id="cogs_percent_data" >
+              </canvas>
+            </div>
+          </div>
+      </div>
+      </div>
+</div>
+        </div>
+	</div>
+</body>
+<script src="../js/poly_fills.js"></script>
+<script src="../js/jquery.js"></script>
+<script src="../js/chart.min.js"></script>
+<script language="javascript" type="text/javascript" src="../js/chartjs-plugin-datalabels.js"></script>
+<script language="javascript" src="../js/core.single.js"></script>
+</html>
