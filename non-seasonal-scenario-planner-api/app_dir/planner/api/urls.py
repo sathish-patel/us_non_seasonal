@@ -13,5 +13,7 @@ urlpatterns = [
     path('edit_comments', views.edit_commets, name='edit_commets'),
     path('delete_comments', views.delete_comments, name='delete_comments'),
     path('attribute_summary', views.attribute_summary, name='attribute_summary'),
+    path('portfolio_list', views.portfolio_list, name='attribute_summary'),
+    path('channel_portfolio', views.channel_portfolio, name='channel_portfolio'),
 ]
 

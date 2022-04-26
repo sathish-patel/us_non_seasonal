@@ -126,11 +126,11 @@ def get_base_filters(request):
 @api_view(["GET"])
 def get_main_filters(request):
     """
-    Description   :: This API fetch RSU base filters
+    Description   :: This API fetch RSU main filters
 
     Method        :: GET.
 
-    Returns       :: RSU base filters
+    Returns       :: Main filters
 
     """
     try:
@@ -163,11 +163,11 @@ def get_main_filters(request):
 @api_view(["GET"])
 def get_attribute_filters(request):
     """
-    Description   :: This API fetch RSU base filters
+    Description   :: This API fetch attribute filters
 
     Method        :: GET.
 
-    Returns       :: RSU base filters
+    Returns       :: Attribute filters
 
     """
     try:
@@ -201,11 +201,11 @@ def get_attribute_filters(request):
 @api_view(["POST"])
 def performance_summary(request):
     """
-    Description   :: This API fetch portfolio_segmentation
+    Description   :: This API fetch performance_summary
 
     Method        :: POST.
 
-    Returns       :: portfolio_segmentation
+    Returns       :: performance_summary
 
     """
     try:
@@ -261,11 +261,11 @@ def performance_summary(request):
 @api_view(["POST"])
 def performance_pqa_summary(request):
     """
-    Description   :: This API fetch portfolio_segmentation
+    Description   :: This API fetch performance_pqa_summary
 
     Method        :: POST.
 
-    Returns       :: portfolio_segmentation
+    Returns       :: performance_pqa_summary
 
     """
     try:
@@ -309,7 +309,7 @@ def performance_pqa_summary(request):
 @api_view(["POST", "GET"])
 def commets(request):
     """
-    Description   :: comment
+    Description   :: To comment
 
     Method        :: GET,POST.
 
@@ -382,11 +382,11 @@ def commets(request):
 @api_view(["POST"])
 def edit_commets(request):
     """
-    Description   :: comment
+    Description   :: To edit the comment
 
     Method        :: POST.
 
-    Returns       :: comment
+    Returns       :: Eidts the comment
 
     """
 
@@ -427,11 +427,11 @@ def edit_commets(request):
 @api_view(["POST"])
 def delete_comments(request):
     """
-    Description   :: comment
+    Description   :: To delete comment
 
     Method        :: POST.
 
-    Returns       :: comment
+    Returns       :: Delets the comment
 
     """
 
@@ -474,11 +474,11 @@ def delete_comments(request):
 @api_view(["POST"])
 def attribute_summary(request):
     """
-    Description   :: This API fetch portfolio_segmentation
+    Description   :: This API fetch attribute_summary
 
     Method        :: POST.
 
-    Returns       :: portfolio_segmentation
+    Returns       :: attribute_summary
 
     """
     try:
@@ -526,3 +526,127 @@ def attribute_summary(request):
     except Exception as error:
             return JsonResponse({"code": 400, "status": "Failed", "data": str(error)})
         
+        
+@api_view(["POST"])
+def portfolio_list(request):
+    """
+    Description   :: This API fetch portfolio list details
+
+    Method        :: POST.
+
+    Returns       :: Portfolio list details
+
+    """
+    try:
+        data = request.data.get("params")
+        response = {}
+        with connection.cursor() as cursor:
+            query=f"""select pm.*,pb.name as brand,pc.name as category,
+                    pc2.name asconsumption,
+                    pc3.name as channel,pc4.name as cta,pf.name as flavour,
+                    pp.name as pack_size,pp2.name as pack_type,
+                    ps.name as sub_brand,py.name as year,pp3.name as product_form
+                    from planner_mainretention as pm
+                    left join planner_brand as pb
+                    on pm.brand_id=pb.id
+                    left join planner_category as pc
+                    on pm.category_id=pc.id
+                    left join planner_consumption as pc2
+                    on pm.consumption_id=pc2.id
+                    left join planner_channel as pc3
+                    on pm.channel_id=pc3.id
+                    left join planner_cta as pc4
+                    on pm.cta_id=pc4.id
+                    left join planner_flavour as pf
+                    on pm.flavour_id=pf.id
+                    left join planner_packsize as pp
+                    on pm.pack_size_id=pp.id
+                    left join planner_packtype as pp2
+                    on pm.pack_type_id=pp2.id
+                    left join planner_subbrand as ps
+                    on pm.sub_brand_id=ps.id
+                    left join planner_year as py
+                    on pm.year_id=py.id
+                    left join planner_productform as pp3
+                    on pm.product_form_id=pp3.id
+                    where 1=1"""
+            if data["channel_id"]:
+                query += f""" and channel_id={data['channel_id']}"""
+            if data["cta_id"]:
+                query += f""" and cta_id={data['cta_id']}"""
+            if data["consumption_id"]:
+                query += f""" and consumption_id={data['consumption_id']}"""
+            if data["category_id"]:
+                query += f""" and category_id={data['category_id']}"""
+            if data["brand_id"] != "Select ALL":
+                query += f""" and brand_id={data['brand_id']}"""
+            cursor.execute(query)
+            response["portfolio_list"] = dictfetchall(cursor)
+        return JsonResponse(
+            {
+                "code": 200,
+                "status": "success",
+                "data": response,
+            }
+        )
+    except Exception as error:
+            return JsonResponse({"code": 400, "status": "Failed", "data": str(error)})
+        
+        
+        
+@api_view(["POST"])
+def channel_portfolio(request):
+    """
+    Description   :: This API fetch channel portfolio details
+
+    Method        :: POST.
+
+    Returns       :: Channel portfolio details
+
+    """
+    try:
+        data = request.data.get("params")
+        response = {}
+        with connection.cursor() as cursor:
+            query=f"""select pm.*,pb.name as brand,pc.name as category,
+                    pc2.name asconsumption,
+                    pc3.name as channel,pc4.name as cta,pf.name as flavour,
+                    pp.name as pack_size,pp2.name as pack_type,
+                    ps.name as sub_brand,py.name as year,pp3.name as product_form
+                    from planner_mainretention as pm
+                    left join planner_brand as pb
+                    on pm.brand_id=pb.id
+                    left join planner_category as pc
+                    on pm.category_id=pc.id
+                    left join planner_consumption as pc2
+                    on pm.consumption_id=pc2.id
+                    left join planner_channel as pc3
+                    on pm.channel_id=pc3.id
+                    left join planner_cta as pc4
+                    on pm.cta_id=pc4.id
+                    left join planner_flavour as pf
+                    on pm.flavour_id=pf.id
+                    left join planner_packsize as pp
+                    on pm.pack_size_id=pp.id
+                    left join planner_packtype as pp2
+                    on pm.pack_type_id=pp2.id
+                    left join planner_subbrand as ps
+                    on pm.sub_brand_id=ps.id
+                    left join planner_year as py
+                    on pm.year_id=py.id
+                    left join planner_productform as pp3
+                    on pm.product_form_id=pp3.id
+                    where 1=1"""
+            if data["channel_id"]:
+                query += f""" and channel_id={data['channel_id']}"""
+            cursor.execute(query)
+            response["portfolio_list"] = dictfetchall(cursor)
+        return JsonResponse(
+            {
+                "code": 200,
+                "status": "success",
+                "data": response,
+            }
+        )
+    except Exception as error:
+            return JsonResponse({"code": 400, "status": "Failed", "data": str(error)})

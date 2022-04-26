@@ -40,7 +40,7 @@ coverage/
 /debug_toolbar
 
 # ignore virtualenv
-
+.venv
 .elasticbeanstalk/config.yml
 log/*
 

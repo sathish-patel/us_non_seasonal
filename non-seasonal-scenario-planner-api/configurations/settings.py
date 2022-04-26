@@ -30,7 +30,7 @@ DEBUG = True
 # App_Link = os.getenv('App_Link')
 App_Link = ""
 
-ALLOWED_HOSTS = ['*',App_Link, 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*','192.168.6.83',App_Link, 'localhost', '127.0.0.1']
 
 # Application definition
 
